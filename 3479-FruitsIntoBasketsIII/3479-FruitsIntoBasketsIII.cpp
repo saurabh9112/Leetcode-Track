@@ -1,38 +1,39 @@
-// Last updated: 8/6/2025, 12:20:05 PM
+// Last updated: 8/6/2025, 1:35:24 PM
 // class Solution {
 // public:
     
 //     void buildSegTree(vector<int> &baskets,vector<int> &seg,int left,int right,int segIndex){
 //         if(left == right){
-//             seg[segIndex] = baskets[low];
+//             seg[segIndex] = baskets[left];
+//             return;
 //         }
 //         int mid = left + (right-left)/2;
-//         buildSegTree(fruits,seg,left,mid,2*segIndex);
-//         buildSegTree(fruits,seg,mid,right,2*segIndex+1);
+//         buildSegTree(baskets,seg,left,mid,2*segIndex);
+//         buildSegTree(baskets,seg,mid+1,right,2*segIndex+1);
 //         seg[segIndex] = max(seg[2*segIndex],seg[2*segIndex+1]);
 //     }
-//     int solve(vector<int> &seg,fruit,int n,int segIndex,int left,int right){
+//     int solve(vector<int> &seg,int fruit,int n,int segIndex,int left,int right){
 //         if(left == right){
 //             seg[segIndex] = -1;
-            
 //             return 1;
 //         }
 //         if(seg[segIndex] >= fruit){
 //             int mid = left + (right-left)/2;
-//             int ans = max(solve(seg,fruit,n,2*segIndex,left,mid),solve(seg,fruit,n,2*segIndex+1,mid,right));
+//             int val;
+//             if(seg[2*segIndex] >= fruit) val = solve(seg,fruit,n,2*segIndex,left,mid);
+//             else{
+//                 val = solve(seg,fruit,n,2*segIndex+1,mid+1,right);
+//             }
+//             seg[segIndex] = max(seg[2*segIndex],seg[2*segIndex+1]);
+//             return val;
 //         }
 //         return -1;
         
 //     }
-//     int canFruitsBePlaced(vector<int>& fruits,vector<int> &seg,int fruit,int n,int segIndex){
-
+//     int canFruitBePlaced(vector<int>& fruits,vector<int> &seg,int fruit,int n,int segIndex){
 //         int left = 0,right = n-1;
 //         int ans = solve(seg,fruit,n,1,left,right);
 //         return ans;
-//         int mid = left + (right-left)/2;
-//         if(seg[segIndex] >= fruit){
-
-//         }
 //     }
 //     int numOfUnplacedFruits(vector<int>& fruits, vector<int>& baskets) {
 //         int n = fruits.size();
@@ -43,7 +44,6 @@
 //         for(int i=0;i<n;i++){
 //             if(canFruitBePlaced(fruits,seg,fruits[i],n,1) == -1) count++;
 //         }
-
 //         return count;
 //     }
 // };
