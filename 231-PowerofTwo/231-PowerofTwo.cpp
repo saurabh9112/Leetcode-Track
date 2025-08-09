@@ -1,15 +1,15 @@
-// Last updated: 8/9/2025, 6:07:41 PM
+// Last updated: 8/9/2025, 11:15:54 PM
 class Solution {
 public:
-    bool solve(int n){
-        if(n == 2) return true;
-        if(n%2 != 0) return false;
-        n /= 2;
-        return solve(n);
-    }
+    // bool solve(int n){
+    //     if(n == 2) return true;
+    //     if(n%2 != 0) return false;
+    //     n /= 2;
+    //     return solve(n);
+    // }
     bool isPowerOfTwo(int n) {
-        if(n == 0) return false;
-        if(n == 1) return true;
-        return solve(n);
+        if (n <= 0) return false;
+        double num = log(n) / log(2); 
+        return fabs(num - floor(num)) < 1e-9;
     }
 };
