@@ -1,4 +1,4 @@
-// Last updated: 8/11/2025, 11:47:34 AM
+// Last updated: 8/11/2025, 2:05:58 PM
 class Solution {
 public:
     vector<int> formPowers(int n){
@@ -46,7 +46,7 @@ public:
             int right = queries[i][1];
             left++;
             right++;
-            long long inv = modPow(prefixProd[left-1], MOD-2, MOD); // modular inverse
+            long long inv = modPow(prefixProd[left-1], MOD-2, MOD); 
             int p = (prefixProd[right] * inv) % MOD;
             ans.push_back(p);
         }
