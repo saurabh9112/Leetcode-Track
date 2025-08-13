@@ -1,9 +1,11 @@
-// Last updated: 8/13/2025, 3:16:42 PM
+// Last updated: 8/13/2025, 3:17:01 PM
 class Solution {
 public:
     bool isPowerOfThree(int n) {
-        if (n <= 0) return false;
-        double div = log(n) / log(3);
-        return fabs(div - round(div)) < 1e-10;
+        if (n < 1) return false;
+        while (n % 3 == 0) {
+            n /= 3;
+        }
+        return n == 1;
     }
 };
