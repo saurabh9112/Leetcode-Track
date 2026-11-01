@@ -1,15 +1,7 @@
-// Last updated: 8/20/2025, 11:51:45 PM
-class Solution {
-public:
-    int minMoves(vector<int>& nums) {
-        int minNum = INT_MAX;
-        int n = nums.size();
-        int sum = 0;
-        for(int i=0;i<n;i++){
-            minNum = min(minNum,nums[i]);
-            sum += nums[i];
-        }
-        return sum - minNum*n;
-
-    }
-};
+// Last updated: 11/2/2026, 12:09:47 AM
+1class Solution {
+2public:
+3    int minMoves(vector<int>& nums) {
+4        return accumulate(nums.begin(), nums.end(), 0ll) - (nums.size() * ranges::min(nums));
+5    }
+6};
